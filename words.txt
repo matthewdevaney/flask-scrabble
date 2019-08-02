@@ -1,0 +1,20 @@
+AA	a volcanic rock consisting of angular blocks of lava with a very rough surface [n -S]
+AAH	"an interjection expressing surprise [interj] / to exclaim in surprise [v -ED, -ING, -S]"
+AAHED	"AAH, to exclaim in surprise [v]"
+AAHING	"AAH, to exclaim in surprise [v]"
+AAHS	"AAH, to exclaim in surprise [v]"
+AAL	an East Indian shrub [n -S]
+AALII	(Hawaiian) a tropical tree [n -S]
+AALIIS	"AALII, (Hawaiian) a tropical tree [n]"
+AALS	"AAL, an East Indian shrub [n]"
+AARDVARK	"(Afrikaans) a nocturnal, insectivorous, badger-sized mammal native to sub-Saharan Africa [n -S]"
+AARDVARKS	"AARDVARK, (Afrikaans) a nocturnal, insectivorous, badger-sized mammal native to sub-Saharan Africa [n]"
+AARDWOLF	"a hyena-like African mammal, aka earthwolf [n AARDWOLVES]"
+AARDWOLVES	"AARDWOLF, a hyena-like African mammal, aka earthwolf [n]"
+AARGH	"an exclamation indicating dismay, also AARRGH, AARRGHH, ARGH [interj]"
+AARRGH	"an exclamation indicating dismay, also AARGH, AARRGHH, ARGH [interj]"
+AARRGHH	"used to express disgust, also AARGH, AARRGH [interj]"
+AARTI	"(Hindi) an Indian ceremony in which candles dipped in ghee are lighted and offered to various deities, also ARTI [n -S]"
+AARTIS	"AARTI, (Hindi) an Indian ceremony in which candles dipped in ghee are lighted and offered to various deities, also ARTI [n]"
+AAS	"AA, a volcanic rock consisting of angular blocks of lava with a very rough surface [n]"
+AASVOGEL	(Afrikaans) a South African vulture [n -S]
