@@ -9,42 +9,61 @@ class Word(db.Model):
 
     def __repr__(self):
         return f'<Word: {self.word}>'
+
+    def __len__(self):
+        return len(self.word})
+    
+    scrabble_tiles = {
+        'a': {'points':  1, 'tiles':  9},
+        'b': {'points':  3, 'tiles':  2},
+        'c': {'points':  3, 'tiles':  2},
+        'd': {'points':  2, 'tiles':  4},
+        'e': {'points':  1, 'tiles': 12},
+        'f': {'points':  4, 'tiles':  2},
+        'g': {'points':  2, 'tiles':  3},
+        'h': {'points':  4, 'tiles':  2},
+        'i': {'points':  1, 'tiles':  9},
+        'j': {'points':  8, 'tiles':  1},
+        'k': {'points':  5, 'tiles':  1},
+        'l': {'points':  1, 'tiles':  4},
+        'm': {'points':  3, 'tiles':  2},
+        'n': {'points':  1, 'tiles':  6},
+        'o': {'points':  1, 'tiles':  8},
+        'p': {'points':  3, 'tiles':  2},
+        'q': {"points": 10, 'tiles':  1},
+        'r': {'points':  1, 'tiles':  6},
+        's': {'points':  1, 'tiles':  4},
+        't': {'points':  1, 'tiles':  6},
+        'u': {'points':  1, 'tiles':  4},
+        'v': {'points':  4, 'tiles':  2},
+        'w': {'points':  4, 'tiles':  2},
+        'x': {'points':  8, 'tiles':  1},
+        'y': {'points':  4, 'tiles':  2},
+        'z': {"points": 10, 'tiles':  1},
+        'blank': {'points': 0, 'tiles': 2}
+}
     
     def calculate_points(self, word):
         """returns the points scored by playing a word"""
 
-        letter_points = {
-            'a': 1,
-            'b': 3,
-            'c': 3,
-            'd': 2,
-            'e': 1,
-            'f': 4,
-            'g': 2,
-            'h': 4,
-            'i': 1,
-            'j': 8,
-            'k': 5,
-            'l': 1,
-            'm': 3,
-            'n': 1,
-            'o': 1,
-            'p': 3,
-            'q': 10,
-            'r': 1,
-            's': 1,
-            't': 1,
-            'u': 1,
-            'v': 4,
-            'w': 4,
-            'x': 8,
-            'y': 4,
-            'z': 10
-        }
-
         word_points = 0
 
         for letter in word:
-            word_points += letter_points[letter.lower()]
+            word_points += self.scrabble_tiles[letter.lower()]['points']
 
         return word_points
+
+    def valid_word_check(self, word):
+        """returns true when word length is 2-15 characters and individual letters do not exceed quantity of scrabble tiles"""
+
+        if len(word) < 2 or len(word) > 15:
+            return False
+
+        scrabble_tiles_remaining = {k:v['tiles'] for (k,v) in self.scrabble_tiles.items()}
+
+        for letter in word:
+            if scrabble_tiles_remaining[letter] == 0:
+                return False
+            scrabble_tiles_remaining[letter] -= 1
+
+        return True
