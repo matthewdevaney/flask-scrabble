@@ -19,7 +19,7 @@ def search():
                 else:
                     break
                 
-                if len(word.word) == len(list(form.letters.data)) - len(check_letters): 
+                if len(scrabble_word.word) == len(list(form.letters.data)) - len(check_letters): 
                     words_found.append(scrabble_word.word)
                     break
 
