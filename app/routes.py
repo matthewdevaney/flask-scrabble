@@ -1,40 +1,46 @@
 from app import app
 from app.forms import SearchForm
 from app.models import Word
-from flask import redirect, render_template, url_for
+from flask import redirect, render_template, request, url_for
 
 @app.route('/', methods=['GET','POST'])
 def search():
     form = SearchForm()
     if form.validate_on_submit():
-        scrabble_dictionary_words = Word.query.all()
-        words_found = []
-
-        for scrabble_word in scrabble_dictionary_words:
-            check_letters = list(form.letters.data)
-            
-            for letter in scrabble_word.word:
-
-                if letter.lower() in check_letters:
-                    check_letters.remove(letter.lower())
-                else:
-                    break
-                
-                if len(scrabble_word.word) == len(list(form.letters.data)) - len(check_letters): 
-                    #words_found.append((scrabble_word.word, scrabble_word.points))
-                    words_found.append(scrabble_word)
-                    break      
-        
-        words_found.sort(key=lambda w: w.points, reverse=True)
-
-        #return redirect(url_for('search_results'))
-        return render_template('search_results.html', results=words_found)
+        return redirect(url_for('search_results', letters=form.letters.data))
     return render_template('search.html', form=form)
 
 
 @app.route('/search_results')
 def search_results():
-    return render_template('search_results.html')
+
+    # retrieve all words from the database 
+    scrabble_dictionary_words = Word.query.all()
+
+    words_found = []
+
+    # check if each word can be constructed from users tiles
+    for scrabble_word in scrabble_dictionary_words:
+        check_letters = list(request.args['letters'])
+        
+        for letter in scrabble_word.word:
+
+            if letter.lower() in check_letters:
+                check_letters.remove(letter.lower())
+            else:
+                break
+            
+            # add the word to results set if length of word is equal to tiles used 
+            count_tiles_used = len(list(request.args['letters'])) - len(check_letters)
+
+            if len(scrabble_word.word) == count_tiles_used: 
+                words_found.append(scrabble_word)
+                break      
+    
+    # sort the results by points from greatest to least
+    words_found.sort(key=lambda w: w.points, reverse=True)
+
+    return render_template('search_results.html', results=words_found)
 
 
 @app.errorhandler(404)
