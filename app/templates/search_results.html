@@ -3,7 +3,9 @@
 {% block content %}
 <div class="col-md-4"></div>
 <div class="col-md-4">
-    Search results go here!
+    {% for scrabble_word in results %}
+        {{ scrabble_word.word }} {{ scrabble_word.points }}<br>
+    {% endfor %}
 </div>
 <div class="col-md-4"></div>
 

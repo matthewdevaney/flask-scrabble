@@ -14,18 +14,21 @@ def search():
             check_letters = list(form.letters.data)
             
             for letter in scrabble_word.word:
-                if letter in check_letters:
-                    check_letters.remove(letter)
+
+                if letter.lower() in check_letters:
+                    check_letters.remove(letter.lower())
                 else:
                     break
                 
                 if len(scrabble_word.word) == len(list(form.letters.data)) - len(check_letters): 
-                    words_found.append(scrabble_word.word)
-                    break
+                    #words_found.append((scrabble_word.word, scrabble_word.points))
+                    words_found.append(scrabble_word)
+                    break      
+        
+        words_found.sort(key=lambda w: w.points, reverse=True)
 
-        print(words_found)        
-
-        return redirect(url_for('search_results'))
+        #return redirect(url_for('search_results'))
+        return render_template('search_results.html', results=words_found)
     return render_template('search.html', form=form)
 
 
