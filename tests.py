@@ -1,8 +1,5 @@
 from app.models import Word
-from app.models.word import valid_word_check
 from app import db
-
-print(valid_word_check('liker'))
 
 
 w = Word(id=1, word='a')

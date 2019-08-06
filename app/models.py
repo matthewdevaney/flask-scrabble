@@ -11,7 +11,7 @@ class Word(db.Model):
         return f'<Word: {self.word}>'
 
     def __len__(self):
-        return len(self.word})
+        return len(self.word)
     
     scrabble_tiles = {
         'a': {'points':  1, 'tiles':  9},
