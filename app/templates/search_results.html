@@ -2,10 +2,14 @@
 
 {% block content %}
 <div class="col-md-4"></div>
-<div class="col-md-4">
-    {% for scrabble_word in results %}
-        {{ scrabble_word.word }} {{ scrabble_word.points }}<br>
-    {% endfor %}
+<div class="col-md-4" style="font-size: 16px; text-align: center;">
+    {% if results %}
+        {% for scrabble_word in results %}
+            {{ scrabble_word.word }} {{ scrabble_word.points }}<br>
+        {% endfor %}
+    {% else %}
+        No words were found
+    {% endif %}
 </div>
 <div class="col-md-4"></div>
 
