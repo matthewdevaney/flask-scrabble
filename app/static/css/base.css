@@ -1,0 +1,18 @@
+.flex-fill {
+    flex:1
+ }
+
+ .navbar-brand {
+     font-size: 24px;
+     margin: 0px 30px 0px 0px 
+ }
+
+ .navbar {
+    background-color: #ED2E38;
+ }
+
+ #nav-search-btn {
+     color: #FFFFFF;
+     border-color: #ff9999;
+     background-color: #ff9999;
+ }
