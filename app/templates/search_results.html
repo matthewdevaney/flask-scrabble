@@ -4,11 +4,14 @@
 
 {% if results %}
     <h3>{{ results|count}} words found</h3>
+
     {% for scrabble_word in results %}
         {{ scrabble_word.word }} {{ scrabble_word.points }}<br>
     {% endfor %}
+
 {% else %}
     No words were found
+    
 {% endif %}
 
 {% endblock content %}

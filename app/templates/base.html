@@ -19,12 +19,12 @@
         <div class="container">
             <ul class="nav navbar-nav flex-fill w-100 flex-nowrap">
                 <li class="nav-item">
-                    <a class="navbar-brand" href="#">Flask Scrabble</a>
+                    <a class="navbar-brand" href="{{ url_for('search') }}">Flask Scrabble</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav flex-fill justify-content-center">
                 <li class="nav-item">
-                        <form action="" class="form-inline" method="post">
+                        <form action="{{ url_for('search') }}" class="form-inline" method="post">
                             {{ form.hidden_tag() }}
                             <div class="input-group">
                                 {{ form.letters }}

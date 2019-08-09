@@ -3,21 +3,24 @@ from app.forms import SearchForm
 from app.models import Word
 from flask import redirect, render_template, request, url_for
 
+
 @app.route('/', methods=['GET','POST'])
-def index():
+def search():
     form = SearchForm()
     if form.validate_on_submit():
         return redirect(url_for('search_results', letters=form.letters.data))
     return render_template('index.html', form=form)
 
+
 @app.route('/search_results', methods=['GET','POST'])
 def search_results():
     form = SearchForm()
 
+    # get the searched letters from the URL argument
     search_letters = request.args.get('letters', default=[])
+    
     words_found = []
 
-    # if form.validate_on_submit():
     if search_letters:
     
         # retrieve all words from the database 
@@ -27,8 +30,10 @@ def search_results():
         for scrabble_word in scrabble_dictionary_words:
             check_letters = list(search_letters)
             
+            # check if word contains the searched letters 
             for letter in scrabble_word.word:
 
+                # remove letter from the searched list if found, otherwise, go to the next word
                 if letter.lower() in check_letters:
                     check_letters.remove(letter.lower())
                 else:
@@ -46,9 +51,11 @@ def search_results():
 
     return render_template('search_results.html', results=words_found, form=form)
 
+
 @app.errorhandler(404)
 def error_page_not_found(error):
     return render_template('404.html'), 404
+
 
 @app.errorhandler(500)
 def error_internal_sever(error):

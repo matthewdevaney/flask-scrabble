@@ -2,6 +2,16 @@
 
 {% block content %}
 
+
+{% if form.letters.errors %}
+    <div class="alert alert-danger" role="alert">
+        {% for error in form.letters.errors %}
+            {{ error }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+
 <h4>Find the best Scrabble word!</h4>
 Type your letters into the search bar above.
 
